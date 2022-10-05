@@ -1,13 +1,63 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	* {
+		@apply transition-all duration-[300ms] box-border;
+	}
+
+	body {
+		@apply font-poppins;
+	}
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer components {
+	.action-button {
+		@apply flex items-center gap-2 p-1.5 bg-white-1 rounded-md select-none hover:bg-white-2 xl:py-1.5 xl:px-3 dark:bg-black-2 dark:hover:bg-black-3;
+	}
+
+	.action-button__icon {
+		@apply text-black text-base xl:text-lg dark:text-white;
+	}
+
+	.action-button__text {
+		@apply hidden capitalize font-chillax-semibold text-sm xl:block dark:text-white;
+	}
+
+	.action-button-sidebar {
+		@apply px-2 py-1.5 mt-2 flex items-center gap-2 bg-white/20 rounded-md dark:bg-white/10 xl:hover:bg-white/30;
+	}
+
+	.action-button-sidebar__icon {
+		@apply text-white;
+	}
+
+	.action-button-sidebar__text {
+		@apply text-white font-chillax-medium text-sm capitalize;
+	}
+
+	.button-primary {
+		@apply rounded-md font-chillax-semibold bg-primary text-white hover:bg-primary/70 dark:bg-primary-dark dark:hover:bg-primary-dark/70 dark:text-black-1;
+	}
+
+	.button-secondary {
+		@apply rounded-md font-chillax-semibold text-primary border-2 border-primary hover:text-primary/50 hover:border-primary/50 dark:border-primary-dark dark:text-primary-dark dark:hover:border-primary-dark/70 dark:hover:text-primary-dark/70;
+	}
+
+	.pass-alert {
+		@apply text-[0.6rem] font-poppins-medium text-red-500 xl:text-[0.65rem] dark:text-red-400;
+	}
+
+	.login-register {
+		@apply w-full h-[92vh] px-6 pt-6 pb-4 xl:h-[91vh] xl:pb-20 xl:flex xl:justify-evenly xl:items-center dark:bg-black-1;
+	}
+
+	.login-register__hero-text {
+		@apply h-1/4 xl:h-full xl:w-2/4 xl:grid xl:place-items-center;
+	}
+
+	.login-register__form-container {
+		@apply w-full h-3/4 flex flex-col xl:w-1/2 xl:items-center;
+	}
 }
