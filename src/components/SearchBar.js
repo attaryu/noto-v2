@@ -15,10 +15,9 @@ export default function SearchBar() {
 		const search = searchKey ?? "";
 
 		if (search.length !== 0) {
-			setSearchKey(search);
 			expandHandler();
 		}
-	}, []);
+	});
 
 	function inputHandler(event) {
 		setKeyword(event);
@@ -36,17 +35,19 @@ export default function SearchBar() {
 
 	function shrinkHandler() {
 		const input = inputRef.current;
-		if (keyword.length === 0) {
+		if (keyword.length === 0 && searchKey.length === 0) {
 			inputClass.map((className) => input.classList.remove(className));
 			inputClass2.map((className) => input.classList.add(className));
 		}
 	}
 
+	const input = keyword || searchKey || '';
+
 	return (
 		<div className="w-3/5 relative flex justify-end items-center">
 			<input
 				type="text"
-				value={keyword}
+				value={input}
 				onChange={inputHandler}
 				onFocus={expandHandler}
 				onBlur={shrinkHandler}
